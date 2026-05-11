@@ -6,8 +6,21 @@ import { Toaster } from "@/components/ui/sonner"
 const geist = Geist({ variable: "--font-geist", subsets: ["latin"] })
 
 export const metadata: Metadata = {
+  metadataBase: new URL(process.env.NEXT_PUBLIC_URL ?? 'http://localhost:3000'),
   title: { default: "UseHora Smartwatch", template: "%s | UseHora Smartwatch" },
-  description: "Smartwatches premium com os melhores preços.",
+  description: "Smartwatches premium com os melhores preços. Encontre o smartwatch ideal para você.",
+  openGraph: {
+    title: "UseHora Smartwatch",
+    description: "Smartwatches premium com os melhores preços. Encontre o smartwatch ideal para você.",
+    type: "website",
+    locale: "pt_BR",
+    siteName: "UseHora Smartwatch",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "UseHora Smartwatch",
+    description: "Smartwatches premium com os melhores preços. Encontre o smartwatch ideal para você.",
+  },
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
