@@ -1,5 +1,3 @@
-"use server"
-
 import { Redis } from "@upstash/redis"
 
 const OTP_TTL = 300 // 5 minutes
@@ -10,13 +8,6 @@ function getRedis() {
     url: process.env.UPSTASH_REDIS_REST_URL!,
     token: process.env.UPSTASH_REDIS_REST_TOKEN!,
   })
-}
-
-export function normalizePhone(raw: string): string {
-  const digits = raw.replace(/\D/g, "")
-  if (digits.startsWith("55") && digits.length >= 12) return `+${digits}`
-  if (digits.length === 11 || digits.length === 10) return `+55${digits}`
-  return `+${digits}`
 }
 
 function otpKey(phone: string) {

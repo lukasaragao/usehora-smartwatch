@@ -3,7 +3,8 @@ import { PrismaAdapter } from "@auth/prisma-adapter"
 import Credentials from "next-auth/providers/credentials"
 import { prisma } from "./db"
 import { authConfig } from "./auth.config"
-import { verifyOTP, normalizePhone } from "./otp"
+import { verifyOTP } from "./otp"
+import { normalizePhone } from "./phone-utils"
 
 export const { handlers, auth, signIn, signOut } = NextAuth({
   adapter: PrismaAdapter(prisma),

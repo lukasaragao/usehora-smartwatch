@@ -1,6 +1,7 @@
 "use server"
 
-import { generateAndSendOTP, normalizePhone } from "@/lib/otp"
+import { generateAndSendOTP } from "@/lib/otp"
+import { normalizePhone } from "@/lib/phone-utils"
 
 export async function sendOTP(
   _prev: unknown,

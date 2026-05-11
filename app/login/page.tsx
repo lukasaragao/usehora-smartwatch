@@ -3,7 +3,7 @@
 import { useState, useActionState } from "react"
 import { signIn } from "next-auth/react"
 import { sendOTP } from "@/actions/phone-auth"
-import { normalizePhone } from "@/lib/otp"
+import { normalizePhone } from "@/lib/phone-utils"
 
 type Step = "phone" | "otp"
 type Tab = "google" | "phone"
