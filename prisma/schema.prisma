@@ -54,6 +54,7 @@ model User {
   email     String         @unique
   name      String?
   image     String?
+  phone     String?        @unique
   role      Role           @default(CUSTOMER)
   accounts  Account[]
   sessions  Session[]
