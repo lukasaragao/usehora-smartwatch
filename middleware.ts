@@ -1,22 +1,8 @@
-import { auth } from "@/lib/auth"
-import { NextResponse } from "next/server"
+import NextAuth from "next-auth"
+import { authConfig } from "@/lib/auth.config"
 
-export default auth((req) => {
-  const isAdminRoute = req.nextUrl.pathname.startsWith("/admin")
-  const isAccountRoute = req.nextUrl.pathname.startsWith("/minha-conta")
-  const isCheckoutRoute = req.nextUrl.pathname.startsWith("/checkout")
-
-  const isLoggedIn = !!req.auth
-  const isAdmin = (req.auth?.user as { role?: string } | undefined)?.role === "ADMIN"
-
-  if (isAdminRoute && (!isLoggedIn || !isAdmin)) {
-    return NextResponse.redirect(new URL("/login", req.url))
-  }
-
-  if ((isAccountRoute || isCheckoutRoute) && !isLoggedIn) {
-    return NextResponse.redirect(new URL("/login", req.url))
-  }
-})
+export const { auth: middleware } = NextAuth(authConfig)
+export default middleware
 
 export const config = {
   matcher: ["/admin/:path*", "/minha-conta/:path*", "/checkout/:path*"],
