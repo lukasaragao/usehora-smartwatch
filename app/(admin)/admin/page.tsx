@@ -1,6 +1,9 @@
-import Link from "next/link"
+﻿import Link from "next/link"
 import { prisma } from "@/lib/db"
 import { cn } from "@/lib/utils"
+
+export const dynamic = "force-dynamic"
+
 
 const STATUS_LABELS: Record<string, string> = {
   PENDING: "Aguardando",

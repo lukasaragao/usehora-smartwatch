@@ -1,4 +1,4 @@
-import { notFound } from "next/navigation"
+﻿import { notFound } from "next/navigation"
 import { prisma } from "@/lib/db"
 import { ProductGallery } from "@/components/shop/ProductGallery"
 import { StarRating } from "@/components/shop/StarRating"
@@ -8,6 +8,9 @@ import { WishlistButton } from "@/components/shop/WishlistButton"
 import { Badge } from "@/components/ui/badge"
 import { Separator } from "@/components/ui/separator"
 import type { Metadata } from "next"
+
+export const dynamic = "force-dynamic"
+
 
 type Props = { params: Promise<{ slug: string }> }
 

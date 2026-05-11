@@ -1,4 +1,4 @@
-import { notFound, redirect } from "next/navigation"
+﻿import { notFound, redirect } from "next/navigation"
 import Link from "next/link"
 import Image from "next/image"
 import { ExternalLink, Package } from "lucide-react"
@@ -8,6 +8,9 @@ import { OrderTimeline } from "@/components/shop/OrderTimeline"
 import { ReviewModal } from "@/components/shop/ReviewModal"
 import { buttonVariants } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
+
+export const dynamic = "force-dynamic"
+
 
 const STATUS_LABELS: Record<string, string> = {
   PENDING: "Aguardando pagamento",

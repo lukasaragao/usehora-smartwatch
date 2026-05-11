@@ -1,7 +1,10 @@
-import { prisma } from "@/lib/db"
+﻿import { prisma } from "@/lib/db"
 import { ProductCard } from "@/components/shop/ProductCard"
 import { ProductFilters } from "@/components/shop/ProductFilters"
 import type { Metadata } from "next"
+
+export const dynamic = "force-dynamic"
+
 
 export const metadata: Metadata = { title: "Produtos" }
 

@@ -1,8 +1,11 @@
-import { prisma } from "@/lib/db"
+﻿import { prisma } from "@/lib/db"
 import { revalidatePath } from "next/cache"
 import { StarRating } from "@/components/shop/StarRating"
 import { buttonVariants } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
+
+export const dynamic = "force-dynamic"
+
 
 export default async function AdminAvaliacoesPage() {
   const reviews = await prisma.review.findMany({

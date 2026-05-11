@@ -1,7 +1,10 @@
-import { getProducts } from "@/actions/products"
+﻿import { getProducts } from "@/actions/products"
 import { buttonVariants } from "@/components/ui/button"
 import Link from "next/link"
 import { cn } from "@/lib/utils"
+
+export const dynamic = "force-dynamic"
+
 
 export default async function AdminProdutosPage() {
   const products = await getProducts()

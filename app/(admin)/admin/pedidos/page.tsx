@@ -1,8 +1,11 @@
-import Link from "next/link"
+﻿import Link from "next/link"
 import { prisma } from "@/lib/db"
 import { buttonVariants } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
 import type { OrderStatus } from "@/lib/generated/prisma/client"
+
+export const dynamic = "force-dynamic"
+
 
 const STATUS_LABELS: Record<string, string> = {
   PENDING: "Aguardando",

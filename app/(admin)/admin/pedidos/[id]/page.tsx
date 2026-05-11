@@ -1,4 +1,4 @@
-import { notFound } from "next/navigation"
+﻿import { notFound } from "next/navigation"
 import Link from "next/link"
 import Image from "next/image"
 import { Package } from "lucide-react"
@@ -7,6 +7,9 @@ import { OrderStatusForm } from "@/components/admin/OrderStatusForm"
 import { OrderTimeline } from "@/components/shop/OrderTimeline"
 import { buttonVariants } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
+
+export const dynamic = "force-dynamic"
+
 
 type Props = { params: Promise<{ id: string }> }
 

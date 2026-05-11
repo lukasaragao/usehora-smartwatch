@@ -1,10 +1,13 @@
-import { notFound } from "next/navigation"
+﻿import { notFound } from "next/navigation"
 import { prisma } from "@/lib/db"
 import { ProductForm } from "@/components/admin/ProductForm"
 import { buttonVariants } from "@/components/ui/button"
 import Link from "next/link"
 import { cn } from "@/lib/utils"
 import type { Metadata } from "next"
+
+export const dynamic = "force-dynamic"
+
 
 type Props = { params: Promise<{ id: string }> }
 

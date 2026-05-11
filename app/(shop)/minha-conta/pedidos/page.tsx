@@ -1,4 +1,4 @@
-import { redirect } from "next/navigation"
+﻿import { redirect } from "next/navigation"
 import Link from "next/link"
 import { Package } from "lucide-react"
 import { auth } from "@/lib/auth"
@@ -6,6 +6,9 @@ import { getUserOrders } from "@/actions/orders"
 import { Badge } from "@/components/ui/badge"
 import { buttonVariants } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
+
+export const dynamic = "force-dynamic"
+
 
 const STATUS_LABELS: Record<string, string> = {
   PENDING: "Aguardando",

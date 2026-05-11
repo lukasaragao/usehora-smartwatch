@@ -1,7 +1,10 @@
-import Link from "next/link"
+﻿import Link from "next/link"
 import { buttonVariants } from "@/components/ui/button"
 import { prisma } from "@/lib/db"
 import { ProductCard } from "@/components/shop/ProductCard"
+
+export const dynamic = "force-dynamic"
+
 
 export default async function HomePage() {
   const products = await prisma.product.findMany({

@@ -1,4 +1,4 @@
-import { redirect } from "next/navigation"
+﻿import { redirect } from "next/navigation"
 import Link from "next/link"
 import { Heart } from "lucide-react"
 import { auth } from "@/lib/auth"
@@ -6,6 +6,9 @@ import { getWishlist } from "@/actions/wishlist"
 import { ProductCard } from "@/components/shop/ProductCard"
 import { buttonVariants } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
+
+export const dynamic = "force-dynamic"
+
 
 export default async function FavoritosPage() {
   const session = await auth()
