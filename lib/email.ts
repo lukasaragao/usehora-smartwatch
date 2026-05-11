@@ -1,6 +1,8 @@
 import { Resend } from "resend"
 
-const resend = new Resend(process.env.RESEND_API_KEY)
+function getResend() {
+  return new Resend(process.env.RESEND_API_KEY)
+}
 
 export async function sendOrderConfirmationEmail(order: {
   orderNumber: string
@@ -8,7 +10,7 @@ export async function sendOrderConfirmationEmail(order: {
   items: { product: { name: string }; quantity: number; unitPrice: any }[]
   total: any
 }) {
-  await resend.emails.send({
+  await getResend().emails.send({
     from: process.env.EMAIL_FROM!,
     to: order.user.email,
     subject: `Pedido ${order.orderNumber} confirmado — UseHora Smartwatch`,
@@ -34,7 +36,7 @@ export async function sendOrderStatusEmail(order: {
     CANCELED: "Cancelado",
   }
 
-  await resend.emails.send({
+  await getResend().emails.send({
     from: process.env.EMAIL_FROM!,
     to: order.user.email,
     subject: `Pedido ${order.orderNumber} — ${statusLabels[order.status] ?? order.status}`,
