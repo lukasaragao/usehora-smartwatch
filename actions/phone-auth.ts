@@ -20,7 +20,8 @@ export async function sendOTP(
   try {
     await generateAndSendOTP(phone)
     return { sent: true }
-  } catch {
+  } catch (err) {
+    console.error("[sendOTP] error:", err)
     return { error: "Erro ao enviar o código. Tente novamente." }
   }
 }
