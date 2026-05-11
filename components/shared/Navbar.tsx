@@ -7,10 +7,12 @@ import { buttonVariants } from "@/components/ui/button"
 import { useCart } from "@/hooks/useCart"
 import { Badge } from "@/components/ui/badge"
 import { cn } from "@/lib/utils"
+import { CartDrawer } from "@/components/shop/CartDrawer"
 
 export function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false)
   const totalItems = useCart((s) => s.totalItems)
+  const openCart = useCart((s) => s.openCart)
 
   const links = [
     { href: "/produtos", label: "Produtos" },
@@ -41,14 +43,19 @@ export function Navbar() {
             <Heart className="h-5 w-5" />
           </Link>
 
-          <Link href="/carrinho" aria-label="Carrinho" className={cn(buttonVariants({ variant: "ghost", size: "icon" }), "relative")}>
+          <button
+            onClick={openCart}
+            aria-label="Carrinho"
+            className={cn(buttonVariants({ variant: "ghost", size: "icon" }), "relative")}
+          >
             <ShoppingCart className="h-5 w-5" />
             {totalItems() > 0 && (
               <Badge className="absolute -top-1 -right-1 h-5 w-5 flex items-center justify-center p-0 text-xs">
                 {totalItems()}
               </Badge>
             )}
-          </Link>
+          </button>
+          <CartDrawer />
 
           <Link href="/minha-conta/pedidos" aria-label="Minha Conta" className={cn(buttonVariants({ variant: "ghost", size: "icon" }))}>
             <User className="h-5 w-5" />
