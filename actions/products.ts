@@ -17,7 +17,8 @@ function slugify(name: string) {
 
 async function requireAdmin() {
   const session = await auth()
-  if (session?.user?.role !== "ADMIN") throw new Error("Não autorizado")
+  const role = (session?.user as { role?: string } | undefined)?.role
+  if (role !== "ADMIN") throw new Error("Não autorizado")
   return session
 }
 
@@ -28,6 +29,7 @@ export async function createProduct(input: ProductInput & { imageUrls?: string[]
   const product = await prisma.product.create({
     data: {
       ...data,
+      specs: data.specs as any,
       slug: data.slug || slugify(data.name),
       images: input.imageUrls?.length
         ? { create: input.imageUrls.map((url, i) => ({ url, position: i })) }
@@ -47,6 +49,7 @@ export async function updateProduct(id: string, input: Partial<ProductInput> & {
     where: { id },
     data: {
       ...input,
+      specs: input.specs as any,
       updatedAt: new Date(),
     },
   })

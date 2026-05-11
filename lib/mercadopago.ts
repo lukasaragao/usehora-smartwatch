@@ -16,7 +16,8 @@ export async function createPreference(order: {
   return preference.create({
     body: {
       external_reference: order.id,
-      items: order.items.map((item) => ({
+      items: order.items.map((item, i) => ({
+        id: String(i + 1),
         title: item.name,
         quantity: item.quantity,
         unit_price: item.unitPrice,

@@ -7,7 +7,7 @@ export default auth((req) => {
   const isCheckoutRoute = req.nextUrl.pathname.startsWith("/checkout")
 
   const isLoggedIn = !!req.auth
-  const isAdmin = req.auth?.user?.role === "ADMIN"
+  const isAdmin = (req.auth?.user as { role?: string } | undefined)?.role === "ADMIN"
 
   if (isAdminRoute && (!isLoggedIn || !isAdmin)) {
     return NextResponse.redirect(new URL("/login", req.url))

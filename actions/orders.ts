@@ -7,7 +7,8 @@ import { revalidatePath } from "next/cache"
 
 async function requireAdmin() {
   const session = await auth()
-  if (session?.user?.role !== "ADMIN") throw new Error("Não autorizado")
+  const role = (session?.user as { role?: string } | undefined)?.role
+  if (role !== "ADMIN") throw new Error("Não autorizado")
   return session
 }
 
@@ -50,7 +51,8 @@ export async function getOrderById(id: string) {
 
   if (!order) throw new Error("Pedido não encontrado")
 
-  if (order.userId !== session.user.id && session.user.role !== "ADMIN") {
+  const role = (session?.user as { role?: string } | undefined)?.role
+  if (order.userId !== session.user.id && role !== "ADMIN") {
     throw new Error("Não autorizado")
   }
 

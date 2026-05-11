@@ -9,7 +9,7 @@ export const productSchema = z.object({
   stock: z.number().int().min(0),
   brand: z.string().optional(),
   active: z.boolean().default(true),
-  specs: z.record(z.string()).optional(),
+  specs: z.record(z.string(), z.unknown()).optional(),
 })
 
 export type ProductInput = z.infer<typeof productSchema>

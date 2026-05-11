@@ -9,7 +9,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
   callbacks: {
     session({ session, user }) {
       session.user.id = user.id
-      session.user.role = (user as any).role
+      session.user.role = (user as { role?: string }).role ?? "CUSTOMER"
       return session
     },
   },
